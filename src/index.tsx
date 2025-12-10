@@ -1,11 +1,14 @@
 import { render } from "react-dom";
-import App from "./App";
-import "./Normalize.scss";
+
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "./app/providers/ThemeProvider";
+import App from "./app/App";
 
 render(
   <BrowserRouter>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
