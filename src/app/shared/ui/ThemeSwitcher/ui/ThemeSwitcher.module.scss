@@ -1,0 +1,91 @@
+.ThemeSwitcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.labelLeft,
+.labelRight {
+  transition: color 0.25s ease;
+}
+
+.toggle {
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 999px;
+  background-color: #e5e7eb;
+  padding: 4px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  transition: background-color 0.25s ease;
+}
+
+.thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background-color: #f9fafb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.25s ease, background-color 0.25s ease;
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* --- DARK --- */
+
+.dark .toggle {
+  background-color: var(--bg-color);
+}
+
+.dark .thumb {
+  transform: translateX(0);
+  background-color: var(--inverted-bg-color);
+}
+
+.dark .labelLeft {
+  color: var(--primary-color);
+}
+
+.dark .labelRight {
+  color: #6b7280;
+}
+
+/* --- LIGHT ---*/
+
+.light .toggle {
+  background-color: var(--bg-color);
+}
+
+.light .thumb {
+  transform: translateX(32px);
+  background-color: var(--inverted-bg-color);
+}
+
+.light .labelLeft {
+  color: #6b7280;
+}
+
+.light .labelRight {
+  color: var(--primary-color);
+}
