@@ -1,1 +1,1 @@
-export { default as AppLink } from "./ui/AppLink"
+export { default as AppLink } from './ui/AppLink';

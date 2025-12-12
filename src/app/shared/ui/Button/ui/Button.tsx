@@ -1,9 +1,9 @@
-import React, { ButtonHTMLAttributes, useState } from "react";
-import styles from "./Button.module.scss";
+import React, { ButtonHTMLAttributes, useState } from 'react';
+import classNames from 'helpers/classNames/classNames';
+import styles from './Button.module.scss';
 
-import classNames from "helpers/classNames/classNames";
 export enum ThemeButton {
-  CLEAR = "clear",
+  CLEAR = 'clear',
 }
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -11,14 +11,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { className, children, theme, ...otherProps } = props;
-  return (
-    <button
-      className={classNames(styles.Button, {}, [className, styles[theme]])}
-      {...otherProps} >
-      {children}
-    </button>
-  );
+    const {
+        className, children, theme, ...otherProps
+    } = props;
+    return (
+        <button
+            className={classNames(styles.Button, {}, [className, styles[theme]])}
+            {...otherProps}
+        >
+            {children}
+        </button>
+    );
 };
 
 export default Button;
