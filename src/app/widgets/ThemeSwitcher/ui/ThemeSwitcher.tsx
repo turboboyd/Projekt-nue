@@ -3,8 +3,13 @@ import styles from "./ThemeSwitcher.module.scss";
 
 import classNames from "helpers/classNames/classNames";
 import { Theme, useTheme } from "app/providers/ThemeProvider";
-import { Button } from "../../Button";
-import { ThemeButton } from "../../Button/ui/Button";
+import { Button, ThemeButton } from "app/shared/ui";
+
+
+
+
+
+
 
 interface ThemeSwitcherProps {
   className?: string;

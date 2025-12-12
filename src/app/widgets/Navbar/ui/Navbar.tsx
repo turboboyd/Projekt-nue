@@ -2,7 +2,7 @@ import styles from "./Navbar.module.scss";
 import classNames from "helpers/classNames/classNames";
 
 
-import { ThemeSwitcher,AppLink, AppLinkTheme } from "app/shared/ui";
+import { AppLink, AppLinkTheme } from "app/shared/ui";
 
 interface NavbarProps {
   className?: string;

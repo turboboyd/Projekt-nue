@@ -13,6 +13,8 @@
 
 .switchers {
   position: absolute;
+  display: flex;
+  gap: 12px;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);

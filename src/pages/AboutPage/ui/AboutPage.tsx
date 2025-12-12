@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const AboutPage = () => {
   const [value, setValue] = useState(0);
@@ -7,11 +8,13 @@ const AboutPage = () => {
     console.log("AboutPage mounted");
   }, []);
 
+  const {t} = useTranslation('aboutPage')
+
   return (
     <main className="page AboutPage">
-      <h1>AboutPage Page</h1>
+      <h1>{t("About Page")}</h1>
       <div className="content">
-        <p>Value: {value}</p>
+        <p>{t("Value")}: {value}</p>
         <button onClick={() => setValue(v => v + 1)}>Increment</button>
         
       </div>

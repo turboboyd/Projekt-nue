@@ -1,7 +1,4 @@
 import { routeConfig } from "app/shared/config/routeConfig/routeConfig";
-
-import { AboutPage, MainPage } from "pages";
-import path from "path";
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
