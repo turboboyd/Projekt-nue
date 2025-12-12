@@ -1,83 +1,76 @@
 .ThemeSwitcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  font-family: inherit;
-  font-size: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: var(--transition-color)
+    display: inline-flex;
+    gap: 16px;
+    align-items: center;
+    font-family: inherit;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: var(--transition-color);
 }
 
-
 .toggle {
-  position: relative;
-  width: 64px;
-  height: 32px;
-  border-radius: 999px;
-  background-color: #e5e7eb;
-  padding: 4px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  transition: var( --transition-background-color)
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 64px;
+    height: 32px;
+    padding: 4px;
+    background-color: #e5e7eb;
+    border-radius: 999px;
+    transition: var(--transition-background-color);
 }
 
 .thumb {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  background-color: #f9fafb;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: var(--transform), var( --transition-background-color)
-
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #f9fafb;
+    border-radius: 999px;
+    transition: var(--transform), var(--transition-background-color);
 }
 
 /* --- DARK --- */
 
 .dark .toggle {
-  background-color: var(--bg-color);
+    background-color: var(--bg-color);
 }
 
 .dark .thumb {
-  transform: translateX(0);
-  background-color: var(--inverted-bg-color);
+    background-color: var(--inverted-bg-color);
+    transform: translateX(0);
 }
 
 .dark .labelLeft {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .dark .labelRight {
-  color: #6b7280;
+    color: #6b7280;
 }
 
-/* --- LIGHT ---*/
+/* --- LIGHT --- */
 
 .light .toggle {
-  background-color: var(--bg-color);
+    background-color: var(--bg-color);
 }
 
 .light .thumb {
-  transform: translateX(32px);
-  background-color: var(--inverted-bg-color);
+    background-color: var(--inverted-bg-color);
+    transform: translateX(32px);
 }
 
 .light .labelLeft {
-  color: #6b7280;
+    color: #6b7280;
 }
 
 .light .labelRight {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
