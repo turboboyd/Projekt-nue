@@ -29,13 +29,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }) => {
       )}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
-      <span className={styles.labelLeft}>DARK</span>
-
       <span className={styles.toggle}>
         <span className={styles.thumb}></span>
       </span>
-
-      <span className={styles.labelRight}>LIGHT</span>
     </Button>
   );
 };

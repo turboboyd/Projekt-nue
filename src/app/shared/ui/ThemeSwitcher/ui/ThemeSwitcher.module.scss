@@ -6,13 +6,9 @@
   font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: color 0.25s ease;
+  transition: var(--transition-color)
 }
 
-.labelLeft,
-.labelRight {
-  transition: color 0.25s ease;
-}
 
 .toggle {
   position: relative;
@@ -27,7 +23,7 @@
   align-items: center;
   justify-content: flex-start;
 
-  transition: background-color 0.25s ease;
+  transition: var( --transition-background-color)
 }
 
 .thumb {
@@ -44,12 +40,8 @@
   align-items: center;
   justify-content: center;
 
-  transition: transform 0.25s ease, background-color 0.25s ease;
+  transition: var(--transform), var( --transition-background-color)
 
-  svg {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 /* --- DARK --- */
