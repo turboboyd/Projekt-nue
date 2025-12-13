@@ -36,6 +36,21 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
     },
+    overrides: [
+    {
+      "files": ["config/**/*.ts", "**/*.config.ts", "**/*.config.js,config"],
+      "rules": {
+        "max-len": "off",
+        "import/no-extraneous-dependencies": "off"
+        }
+    },
+     {
+      "files": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
     globals: {
         __IS_DEV__: true,
     },

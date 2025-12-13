@@ -17,7 +17,6 @@
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
 
-    "@stylistic/no-tabs": true,
     "@stylistic/indentation": 4,
 
     "@stylistic/string-quotes": "single",
