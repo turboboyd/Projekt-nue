@@ -1,6 +1,8 @@
 .app.light {
     --bg-color: rgb(183 112 112);
-    --inverted-bg-color: black;
+    --inverted-bg-color: #141426;
+    --bg-gradient: rgb(183 112 112);
+    --inverted-bg-gradient: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
     --primary-color: #4530e4;
     --secondary-color: #786ae4;
     --inverted-primary-color: #049604;

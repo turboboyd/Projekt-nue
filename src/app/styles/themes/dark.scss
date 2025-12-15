@@ -1,6 +1,8 @@
 .app.dark {
-    --bg-color: black;
+    --bg-color: #141426;
     --inverted-bg-color: rgb(183 112 112);
+    --bg-gradient: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
+    --inverted-bg-gradient: rgb(183 112 112);
     --primary-color: #049604;
     --secondary-color: #04ff04;
     --inverted-primary-color: #4530e4;

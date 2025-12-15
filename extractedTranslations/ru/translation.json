@@ -1,4 +1,12 @@
 {
   "About Page": "About Page",
+  "Go back to the main page": "Go back to the main page",
+  "It looks like you've fallen into a void": {
+    "": ""
+  },
+  "Page not found": "Page not found",
+  "There is no such page": {
+    "": ""
+  },
   "Value": "Value"
 }
