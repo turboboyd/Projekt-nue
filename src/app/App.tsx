@@ -1,15 +1,15 @@
-import React, { Suspense, useEffect } from "react";
-import "./styles/index.scss";
-import { AppRouter, useTheme } from "./providers";
-import { classNames } from "helpers";
+import React, { Suspense } from 'react';
+import './styles/index.scss';
 
-import { Navbar, Sidebar } from "./widgets";
+import { classNames } from 'shared/lib';
+import { Navbar, Sidebar } from 'widgets';
+import { AppRouter, useTheme } from './providers';
 
 const App = () => {
     const { theme } = useTheme();
 
     return (
-        <div className={classNames("app", {}, [theme])}>
+        <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">

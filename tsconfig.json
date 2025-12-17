@@ -1,21 +1,25 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "ESNext",
-    "target": "es5",
-    "jsx": "react-jsx",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./src/*"]
-    },
-    "esModuleInterop": true
-  },
-  "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "target": "es5",
+        "jsx": "react-jsx",
+        "allowJs": true,
+        "lib": ["DOM", "DOM.Iterable", "ES2015", "ES2017"],
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "*": ["./src/*"]
+        },
+        "esModuleInterop": true,
+        "types": ["jest", "@testing-library/jest-dom"]
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "include": ["src/**/*", "config/jest/setupTests.ts"],
+    "exclude": ["dist", "node_modules"]
 }

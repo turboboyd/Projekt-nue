@@ -1,5 +1,5 @@
-import { routeConfig } from 'app/shared/config/routeConfig/routeConfig';
-import { Loader } from 'app/shared/ui';
+import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { Loader } from 'shared/ui';
 
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
