@@ -1,7 +1,9 @@
 {
+  "About": "About",
   "About Page": "About Page",
   "An unexpected error has occurred": "An unexpected error has occurred",
   "Go back to the main page": "Go back to the main page",
+  "Home": "Home",
   "It looks like you've fallen into a void": {
     "": ""
   },
@@ -10,5 +12,6 @@
   "There is no such page": {
     "": ""
   },
+  "Toggle": "Toggle",
   "Value": "Value"
 }
