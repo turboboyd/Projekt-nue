@@ -1,58 +1,74 @@
 name: CI
 
 on:
-    push:
-        branches: ["main"]
-    pull_request:
-        branches: ["main"]
-    workflow_dispatch:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-    ci:
-        runs-on: ubuntu-latest
-        timeout-minutes: 30
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Setup Node (from .nvmrc)
-              uses: actions/setup-node@v4
-              with:
-                  node-version-file: ".nvmrc"
-                  cache: "npm"
+      - name: Setup Node (from .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Lint
-              run: npm run lint
+      - name: Lint
+        run: npm run lint
 
-            - name: Unit tests
-              run: npm run test:unit
+      - name: Unit tests
+        run: npm run test:unit
 
-            - name: Production build
-              run: npm run build:prod
+      - name: Production build
+        run: npm run build:prod
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
 
-            - name: Upload production build (artifact)
-              uses: actions/upload-artifact@v4
-              with:
-                  name: prod-build
-                  path: build
-                  if-no-files-found: error
+      - name: Upload production build (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-build
+          path: build
+          if-no-files-found: error
 
-            - name: Build Storybook (static)
-              run: npm run storybook:build
+      - name: Build Storybook (static)
+        run: npm run storybook:build
 
-            - name: Visual tests (Loki, static)
-              run: npm run test:ui:static
+      - name: Verify Storybook output
+        run: |
+          ls -la
+          ls -la storybook-static || true
+          test -f storybook-static/index.html
 
-            - name: Upload Loki artifacts (only on failure)
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: loki-artifacts
-                  path: |
-                      .loki/current
-                      .loki/difference
-                  if-no-files-found: ignore
+      - name: Serve Storybook (static)
+        run: npx http-server storybook-static -p 6006 -a 127.0.0.1 &
+
+      - name: Wait for Storybook
+        run: npx wait-on http://127.0.0.1:6006
+
+      - name: Visual tests (Loki)
+        run: npx loki test --url http://127.0.0.1:6006
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
+
+      - name: Upload Loki artifacts (only on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: loki-artifacts
+          path: |
+            .loki/current
+            .loki/difference
+          if-no-files-found: ignore
