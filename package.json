@@ -17,7 +17,9 @@
     "storybook": "start-storybook -p 6006 -h 127.0.0.1 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook -o storybook-static",
     "test:ui": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test",
-    "test:ui:static": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test --staticDir storybook-static",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    
+    "test:ui:static": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test --reactUri file:./storybook-static/iframe.html --staticDir storybook-static",
     "test:ui:live": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test --reactUri http://127.0.0.1:6006",
     "test:ui:ok": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test approve",
     "test:ui:ok:static": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test approve --staticDir storybook-static",
