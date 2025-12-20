@@ -35,7 +35,7 @@ jobs:
         run: npm run build:prod
       
       - name: Storybook build
-        run: npm run storybook
+        run: npm run storybook:build
 
       - name: Screenshot testing
         run: npm run test:ui:ci
