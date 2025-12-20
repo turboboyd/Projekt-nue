@@ -13,9 +13,15 @@
     "lint:ts:fix": "eslint . --ext .ts,.tsx --fix",
     "lint:scss": "stylelint **/*.scss",
     "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
-    "unit": "jest --config ./config/jest/jest.config.ts",
-    "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "build-storybook": "build-storybook -c ./config/storybook"
+    "test:unit": "jest --config ./config/jest/jest.config.ts",
+    "storybook": "start-storybook -p 6006 -h 127.0.0.1 -c ./config/storybook",
+    "storybook:build": "build-storybook -c ./config/storybook -o storybook-static",
+    "test:ui": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test",
+    "test:ui:static": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test --staticDir storybook-static",
+    "test:ui:live": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test --reactUri http://127.0.0.1:6006",
+    "test:ui:ok": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test approve",
+    "test:ui:ok:static": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test approve --staticDir storybook-static",
+    "test:ui:ok:live": "cross-env NODE_OPTIONS=--dns-result-order=ipv4first loki test approve --reactUri http://127.0.0.1:6006"
   },
   "keywords": [],
   "author": "Denis Daniv",
@@ -50,6 +56,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "babel-loader": "^8.2.3",
     "babel-plugin-i18next-extract": "^0.8.3",
+    "cross-env": "^10.1.0",
     "css-loader": "^6.6.0",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -62,6 +69,7 @@
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "loki": "^0.35.1",
     "mini-css-extract-plugin": "^2.5.3",
     "regenerator-runtime": "^0.14.1",
     "sass": "^1.49.9",
@@ -88,5 +96,20 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.5",
     "react-router-dom": "^6.2.1"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.app",
+        "preset": "iPhone 7"
+      }
+    }
   }
 }
