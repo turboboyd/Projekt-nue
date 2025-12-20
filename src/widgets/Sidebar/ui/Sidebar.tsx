@@ -9,7 +9,7 @@ interface SidebarProps {
     className?: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
 
@@ -37,5 +37,3 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         </div>
     );
 };
-
-export default Sidebar;

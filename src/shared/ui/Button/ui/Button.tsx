@@ -1,12 +1,12 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes } from 'react';
 
-import { classNames } from "shared/lib";
-import styles from "./Button.module.scss";
+import { classNames } from 'shared/lib';
+import styles from './Button.module.scss';
 /* eslint no-unused-vars: ["warn", { "varsIgnorePattern": "^[A-Z_]+$" }] */
 
 export enum ThemeButton {
-    CLEAR = "clear",
-    OUTLINE = "outline",
+    CLEAR = 'clear',
+    OUTLINE = 'outline',
 }
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -14,7 +14,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
-    const { className, children, theme, ...otherProps } = props;
+    const {
+        className, children, theme, ...otherProps
+    } = props;
     return (
         <button
             type="button"

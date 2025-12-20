@@ -35,7 +35,7 @@ module.exports = {
             "error",
             {
                 markupOnly: true,
-                ignoreAttribute: ["data-testid","to"],
+                ignoreAttribute: ["data-testid", "to"],
             },
         ],
     },
@@ -59,6 +59,22 @@ module.exports = {
             files: ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
             rules: {
                 "i18next/no-literal-string": "off",
+            },
+        },
+        {
+            files: [
+                "config/storybook/webpack.config.ts",
+                ".storybook/**/*.ts",
+                ".storybook/**/*.tsx",
+            ],
+            rules: {
+                "no-param-reassign": "off",
+            },
+        },
+        {
+            files: ["**/*.stories.ts", "**/*.stories.tsx"],
+            rules: {
+                "react/jsx-props-no-spreading": "off",
             },
         },
     ],
