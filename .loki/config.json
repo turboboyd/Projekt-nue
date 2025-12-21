@@ -1,4 +1,0 @@
-{
-  "staticDir": "storybook-static",
-  "chromeBinaryPath": "C:/.../node_modules/puppeteer/.../chrome.exe"
-}

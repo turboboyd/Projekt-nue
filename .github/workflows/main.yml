@@ -1,35 +1,43 @@
-name: linting, testing, building
+name: CI
+
 on:
     push:
         branches: ["main"]
     pull_request:
         branches: ["main"]
+    workflow_dispatch:
+
 jobs:
-    pipeline:
+    ci:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [20.19.0]
+        timeout-minutes: 60
 
         steps:
-            - uses: actions/checkout@v2
-            - name: Staring Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node (from .nvmrc)
+              uses: actions/setup-node@v4
               with:
-                  node-version: ${{ matrix.node-version }}
-            - name: install modules
-              run: npm install
-            - name: build production project
-              run: npm run build:prod
-            - name: linting typescript
-              run: npm run lint:ts
-            - name: linting css
-              run: npm run lint:scss
-            - name: unit testing
+                  node-version-file: ".nvmrc"
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Lint
+              run: npm run lint
+
+            - name: Unit tests
               run: npm run test:unit
-            - name: build storybook
+
+            - name: Production build
+              run: npm run build:prod
+
+            - name: storybook build
               run: npm run storybook:build
-            - name: screenshot testing
+
+            - name: Production build
               run: npm run test:ui:ci
             - name: Upload Loki artifacts on failure
               if: failure()
