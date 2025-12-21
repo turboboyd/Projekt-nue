@@ -1,52 +1,74 @@
 name: CI
 
 on:
-    push:
-        branches: ["main"]
-    pull_request:
-        branches: ["main"]
-    workflow_dispatch:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-    ci:
-        runs-on: ubuntu-latest
-        timeout-minutes: 60
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Setup Node (from .nvmrc)
-              uses: actions/setup-node@v4
-              with:
-                  node-version-file: ".nvmrc"
-                  cache: "npm"
+      - name: Setup Node (from .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install system fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            fonts-dejavu \
+            fonts-liberation \
+            fonts-noto-core \
+            fonts-noto-color-emoji
 
-            - name: Lint
-              run: npm run lint
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Unit tests
-              run: npm run test:unit
+      - name: Lint
+        run: npm run lint
 
-            - name: Production build
-              run: npm run build:prod
+      - name: Unit tests
+        run: npm run test:unit
 
-            - name: Storybook build
-              run: npm run storybook:build
+      - name: Production build
+        run: npm run build:prod
 
-            - name: Screenshot testing
-              run: npm run test:ui:ci
+      - name: Storybook build
+        run: npm run storybook:build
 
-            - name: Upload Loki artifacts on failure
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: loki-artifacts
-                  path: |
-                      .loki/difference
-                      .loki/current
-                      .loki/reference
-                      storybook-static
+      - name: Screenshot testing
+        id: loki
+        run: npm run test:ui:ci
+        continue-on-error: true
+
+      - name: Prepare updated reference from current
+        if: steps.loki.outcome == 'failure'
+        run: |
+          rm -rf .loki/reference-updated
+          mkdir -p .loki/reference-updated
+          cp -R .loki/current/* .loki/reference-updated/
+
+      - name: Upload Loki artifacts on failure
+        if: steps.loki.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: loki-artifacts
+          path: |
+            .loki/difference/**
+            .loki/current/**
+            .loki/reference/**
+            .loki/reference-updated/**
+
+      - name: Fail job if Loki failed
+        if: steps.loki.outcome == 'failure'
+        run: exit 1
