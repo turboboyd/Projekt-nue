@@ -34,11 +34,12 @@ jobs:
             - name: Production build
               run: npm run build:prod
 
-            - name: storybook build
+            - name: Storybook build
               run: npm run storybook:build
 
             - name: Production build
               run: npm run test:ui:ci
+
             - name: Upload Loki artifacts on failure
               if: failure()
               uses: actions/upload-artifact@v4
