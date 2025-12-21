@@ -37,7 +37,7 @@ jobs:
             - name: Storybook build
               run: npm run storybook:build
 
-            - name: Production build
+            - name: Screenshot testing
               run: npm run test:ui:ci
 
             - name: Upload Loki artifacts on failure
