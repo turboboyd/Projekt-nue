@@ -60,4 +60,14 @@ describe('LanguagesSwitcher', () => {
         fireEvent.click(screen.getByRole('button', { name: 'EN' }));
         expect(mockChangeLanguage).toHaveBeenCalledWith('en');
     });
+
+    test('does not have collapsed class by default', () => {
+        const { container } = render(<LanguagesSwitcher />);
+        expect(container.firstChild).not.toHaveClass('collapsed');
+    });
+
+    test('adds collapsed class when collapsed is true', () => {
+        const { container } = render(<LanguagesSwitcher collapsed />);
+        expect(container.firstChild).toHaveClass('collapsed');
+    });
 });

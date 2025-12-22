@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Button, ThemeButton } from 'shared/ui';
+import { Button, ButtonTheme } from 'shared/ui';
 
 describe('className', () => {
     test('with only first param', () => {
@@ -8,7 +8,7 @@ describe('className', () => {
     });
 
     test('with clear theme ', () => {
-        render(<Button theme={ThemeButton.CLEAR}>Test</Button>);
+        render(<Button theme={ButtonTheme.CLEAR}>Test</Button>);
         expect(screen.getByText('Test')).toBeInTheDocument();
     });
 });

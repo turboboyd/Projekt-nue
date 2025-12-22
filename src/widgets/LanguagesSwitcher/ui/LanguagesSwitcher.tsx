@@ -1,11 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib';
-import { Button, ThemeButton } from 'shared/ui';
+import { Button, ButtonTheme } from 'shared/ui';
 import styles from './LanguagesSwitcher.module.scss';
 
 interface LanguagesSwitcherProps {
     className?: string;
+    collapsed?: boolean;
 }
 
 const LANGS = [
@@ -14,7 +15,7 @@ const LANGS = [
     { code: 'ru', label: 'RU' },
 ];
 
-const LanguagesSwitcher: React.FC<LanguagesSwitcherProps> = ({ className }) => {
+const LanguagesSwitcher: React.FC<LanguagesSwitcherProps> = ({ className, collapsed }) => {
     const { i18n } = useTranslation();
 
     const current = (i18n.language || 'en').split('-')[0];
@@ -33,6 +34,7 @@ const LanguagesSwitcher: React.FC<LanguagesSwitcherProps> = ({ className }) => {
                     [styles.isEn]: current === 'en',
                     [styles.isDe]: current === 'de',
                     [styles.isRu]: current === 'ru',
+                    [styles.collapsed]: collapsed,
                 },
                 [className],
             )}
@@ -42,7 +44,7 @@ const LanguagesSwitcher: React.FC<LanguagesSwitcherProps> = ({ className }) => {
             {LANGS.map((lang) => (
                 <Button
                     key={lang.code}
-                    theme={ThemeButton.CLEAR}
+                    theme={ButtonTheme.CLEAR}
                     type="button"
                     onClick={setLang(lang.code)}
                     className={classNames(

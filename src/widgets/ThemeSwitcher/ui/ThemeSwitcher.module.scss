@@ -6,7 +6,7 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    transition: var(--transition-color);
+    transition: color var(--esse-025);
 }
 
 .toggle {
@@ -20,7 +20,7 @@
     padding: 4px;
     background-color: #e5e7eb;
     border-radius: 999px;
-    transition: var(--transition-background-color);
+    transition: background-color var(--esse-025);
 }
 
 .thumb {
@@ -34,7 +34,7 @@
     height: 24px;
     background-color: #f9fafb;
     border-radius: 999px;
-    transition: var(--transform), var(--transition-background-color);
+    transition: transform var(--esse-025), background-color var(--esse-025);
 }
 
 /* --- DARK --- */

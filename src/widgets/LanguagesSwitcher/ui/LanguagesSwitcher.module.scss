@@ -3,10 +3,21 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 120px;
+    height: 44px;
     padding: 4px;
     background-color: var(--inverted-bg-color);
     border-radius: 999px;
     box-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
+    transition: width 0.25s ease,
+        height 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.collapsed {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    width: 44px;
+    height: 120px;
 }
 
 .langButton {
@@ -20,8 +31,14 @@
     text-transform: uppercase;
     letter-spacing: 0.14em;
     border-radius: 999px;
-    transition: color 0.2s ease, transform 0.1s ease;
+    transition: color var(--esse-025), transform var(--esse-025);
 }
+
+.collapsed .langButton {
+    width: 100%;
+    font-size: 10px;
+}
+
 
 .langButton:hover {
     transform: translateY(-1px);
@@ -41,8 +58,9 @@
     height: calc(100% - 8px);
     background-color: var(--primary-color);
     border-radius: 999px;
-    transition: transform 0.25s ease, var(--transition-background-color);
+    transition: transform var(--esse-025), color var(--esse-025);
 }
+
 
 
 .isEn .thumb {
@@ -56,3 +74,21 @@
 .isRu .thumb {
     transform: translateX(200%);
 }
+
+.collapsed .thumb {
+    width: calc(100% - 8px);
+    height: calc((100% - 8px) / 3);
+}
+
+.collapsed.isEn .thumb {
+    transform: translateY(0);
+}
+
+.collapsed.isDe .thumb {
+    transform: translateY(100%);
+}
+
+.collapsed.isRu .thumb {
+    transform: translateY(200%);
+}
+

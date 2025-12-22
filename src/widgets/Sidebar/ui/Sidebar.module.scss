@@ -3,12 +3,13 @@
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
     background: var(--inverted-bg-color);
-    transition: var(--transition-width);
+    transition: width var(--esse-025);
 }
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
 }
+
 
 .switchers {
     position: absolute;
@@ -16,5 +17,31 @@
     left: 50%;
     display: flex;
     gap: 12px;
+    align-items: center;
     transform: translateX(-50%);
+}
+
+.collapsed .switchers {
+    flex-direction: column;
+}
+
+.collapseBtn {
+    position: absolute;
+    right: -32px;
+    bottom: 40px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    margin-left: 4px;
+    color: var(--primary-color);
+}
+
+.icon {
+    margin-right: 8px;
+    fill: var(--primary-color);
 }
