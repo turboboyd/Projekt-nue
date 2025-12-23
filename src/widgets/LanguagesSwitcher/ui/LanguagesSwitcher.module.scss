@@ -31,7 +31,7 @@
     text-transform: uppercase;
     letter-spacing: 0.14em;
     border-radius: 999px;
-    transition: color var(--esse-025), transform var(--esse-025);
+    transition: color var( --transition-base), transform var( --transition-base);
 }
 
 .collapsed .langButton {
@@ -58,7 +58,7 @@
     height: calc(100% - 8px);
     background-color: var(--primary-color);
     border-radius: 999px;
-    transition: transform var(--esse-025), color var(--esse-025);
+    transition: transform var( --transition-base), color var( --transition-base);
 }
 
 

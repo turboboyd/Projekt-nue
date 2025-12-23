@@ -8,8 +8,19 @@ export default {
     testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     rootDir: '../../',
     setupFiles: ['<rootDir>/config/jest/jest.setup.ts'],
-    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
+
     moduleNameMapper: {
+
         '\\.s?css$': 'identity-obj-proxy',
+
+        '\\.(png|jpe?g|gif|webp|svg)$': '<rootDir>/config/jest/__mocks__/fileMock.ts',
+
+        '^app/(.*)$': '<rootDir>/src/app/$1',
+        '^pages/(.*)$': '<rootDir>/src/pages/$1',
+        '^widgets/(.*)$': '<rootDir>/src/widgets/$1',
+        '^features/(.*)$': '<rootDir>/src/features/$1',
+        '^entities/(.*)$': '<rootDir>/src/entities/$1',
+        '^shared/(.*)$': '<rootDir>/src/shared/$1',
     },
 };

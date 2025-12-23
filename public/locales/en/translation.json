@@ -2,5 +2,8 @@
   "Test": "Translation",
   "Translation": "Translation",
   "An unexpected error has occurred": "An unexpected error has occurred",
-  "Refresh the page": "Refresh the page"
+  "Refresh the page": "Refresh the page",
+  "test": "test",
+  "login": "Login",
+  "Login": "Login"
 }
