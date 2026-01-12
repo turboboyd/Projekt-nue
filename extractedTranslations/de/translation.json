@@ -17,6 +17,8 @@
   },
   "Toggle": "Toggle",
   "Value": "Value",
+  "decrement": "decrement",
+  "increment": "increment",
   "login": "login",
   "test": "test"
 }
